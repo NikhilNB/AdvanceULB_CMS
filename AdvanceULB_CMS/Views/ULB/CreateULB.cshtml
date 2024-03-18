@@ -1,0 +1,55 @@
+﻿@model AdvanceULB_CMS.Models.ULBCreation
+
+@{
+    ViewData["Title"] = "CreateULB";
+}
+
+<h1>CreateULB</h1>
+
+<h4>ULBCreation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateULB">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="appName" class="control-label"></label>
+                <input asp-for="appName" class="form-control" />
+                <span asp-validation-for="appName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="extName" class="control-label"></label>
+                <input asp-for="extName" class="form-control" />
+                <span asp-validation-for="extName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="marName" class="control-label"></label>
+                <input asp-for="marName" class="form-control" />
+                <span asp-validation-for="marName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="property" class="control-label"></label>
+                <input asp-for="property" class="form-control" />
+                <span asp-validation-for="property" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lat" class="control-label"></label>
+                <input asp-for="lat" class="form-control" />
+                <span asp-validation-for="lat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lng" class="control-label"></label>
+                <input asp-for="lng" class="form-control" />
+                <span asp-validation-for="lng" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,35 @@
+﻿@model AdvanceULB_CMS.Models.Servers
+
+@using (Html.BeginForm("PerformAction", "ULB", FormMethod.Post, new { id = "ulbForm" }))
+{
+    <label for="serverSelect">Server:</label>
+    <select id="serverSelect" name="server">
+        <option value="">Select a server</option>
+        <option value="local">local</option>
+        <option value="253">253</option>
+        <option value="43">43</option>
+    </select>
+
+    <label for="actionSelect">Action:</label>
+    <select id="actionSelect" name="action">
+        <option value="">Select an action</option>
+        <option value="get">Get ULBs</option>
+        <option value="create">Create ULB</option>
+    </select>
+
+    <button type="submit" id="submitBtn">Submit</button>
+}
+
+@section Scripts {
+    <script>
+        document.getElementById('ulbForm').addEventListener('submit', function (event) {
+            var serverSelect = document.getElementById('serverSelect');
+            var selectedServer = serverSelect.value;
+
+            if (!selectedServer) {
+                alert('Please select a server.');
+                event.preventDefault();
+            }
+        });
+    </script>
+}

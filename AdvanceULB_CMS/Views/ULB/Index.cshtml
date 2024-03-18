@@ -1,0 +1,37 @@
+﻿@model AdvanceULB_CMS.Models.Servers
+
+@{
+    ViewData["Title"] = "ULB Management";
+}
+
+<h1>ULB Management</h1>
+
+<form id="ulbForm">
+    <label for="server">Select Server:</label>
+    <select id="server" name="server">
+        <option value="server1">local</option>
+        <option value="server2">253</option>
+        <option value="server2">43</option>
+    </select>
+    <br>
+    <label for="action">Select Action:</label>
+    <select id="action" name="action">
+        <option value="get">Get ULB Data</option>
+        <option value="create">Create ULB</option>
+    </select>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("ulbForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var server = document.getElementById("server").value;
+        var action = document.getElementById("action").value;
+        if (action === "get") {
+            window.location.href = "/ULB/GetULBs?server=" + server;
+        } else if (action === "create") {
+            window.location.href = "/ULB/CreateULB?server=" + server;
+        }
+    });
+</script>

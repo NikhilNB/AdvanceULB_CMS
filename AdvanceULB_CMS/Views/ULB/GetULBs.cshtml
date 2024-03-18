@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AdvanceULB_CMS.Models.ULBData>
+
+@{
+    ViewData["Title"] = "GetULBs";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>App ID</th>
+            <th>App Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.appId</td>
+                <td>@item.appName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    var data = @Html.Raw(Json.Serialize(Model));
+
+    data.forEach(function (item) {
+        console.log("{");
+        console.log("  \"appId\": " + item.appId + ",");
+        console.log("  \"appName\": \"" + item.appName + "\"");
+        console.log("},");
+    });
+</script>
+
