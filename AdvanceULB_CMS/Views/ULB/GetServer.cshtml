@@ -9,14 +9,40 @@
         <option value="253">253</option>
         <option value="43">43</option>
     </select>
+    <div style="margin-bottom: 10px;"></div>
+    <label>Action:</label>
+    <div id="actionButtons">
+        <button type="button" class="actionBtn" value="get">Get ULBs</button>
+        <button type="button" class="actionBtn" value="create">Create ULB</button>
+    </div>
+    <input type="hidden" id="selectedAction" name="action" />
 
-    <label for="actionSelect">Action:</label>
-    <select id="actionSelect" name="action">
-        <option value="">Select an action</option>
-        <option value="get">Get ULBs</option>
-        <option value="create">Create ULB</option>
-    </select>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var actionButtons = document.querySelectorAll('.actionBtn');
+            var selectedActionInput = document.getElementById('selectedAction');
 
+            actionButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    selectedActionInput.value = this.value;
+
+                    actionButtons.forEach(function (btn) {
+                        btn.classList.remove('active');
+                    });
+
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .actionBtn.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <div style="margin-bottom: 10px;"></div>
     <button type="submit" id="submitBtn">Submit</button>
 }
 

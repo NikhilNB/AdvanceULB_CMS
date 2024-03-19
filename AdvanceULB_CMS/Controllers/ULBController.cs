@@ -17,15 +17,6 @@ namespace AdvanceULB_CMS.Controllers
           
         }
 
-        //dfgsdfgsf
-
-        //Shubham
-
-        // push by Nikhil
-
-        //Last Push
-
-        //Push again
         [HttpGet]
         public IActionResult GetServer()
         {
