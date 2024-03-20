@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
 
 namespace AdvanceULB_CMS.Controllers
@@ -9,31 +10,16 @@ namespace AdvanceULB_CMS.Controllers
     public class ULBController : Controller
     {
         HttpClient httpClient = new HttpClient();
-        
+
+
 
         public IActionResult Index()
         {
             return View();
-          
         }
+    
 
-        [HttpGet]
-        public IActionResult GetServer()
-        {
-            return View();
-        }
-
-        public IActionResult GetServer(string server)
-        {
-            Servers model = new Servers();
-            model.SelectedServer = server;
-            return View(model);
-        }
-
-
-
-
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> GetULBs(string server)
         {
             List<ULBData>? ulb = new();
@@ -56,35 +42,36 @@ namespace AdvanceULB_CMS.Controllers
 
                 if (status == "success")
                 {
+                   
                     ulb = distResponse.Data;
-                    string formattedJson = JsonConvert.SerializeObject(ulb, Formatting.Indented);
 
-                    return Content(formattedJson, "application/json");
+                    return View(ulb);
                 }
             }
 
             return View(ulb);
         }
 
+
+
         [HttpGet]
-        public IActionResult CreateULB(string server)
+        public IActionResult CreateULB()
         {
-            var ulbModel = new ULBCreation();
-            return View(ulbModel);
+            return View();
         }
 
-        
-        public async Task<IActionResult> CreateULB(ULBCreation ulbData, string server)
+        [HttpPost]
+        public async Task<IActionResult> CreateULB(ULBCreation ulbData)
         {
             try
             {
                 string jsonData = JsonConvert.SerializeObject(ulbData);
                 httpClient.BaseAddress = new Uri("http://localhost:23621/api");
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                httpClient.DefaultRequestHeaders.Add("server", server);
+                httpClient.DefaultRequestHeaders.Add("server", ulbData.server);
 
                 HttpResponseMessage response = await httpClient.PostAsync(httpClient.BaseAddress + "/ULB/CreateULB",
-                                                                          new StringContent(jsonData, Encoding.UTF8, "application/json"));
+                new StringContent(jsonData, Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,24 +89,24 @@ namespace AdvanceULB_CMS.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult PerformAction(string server, string action)
-        {
-            if (string.IsNullOrEmpty(server) || string.IsNullOrEmpty(action))
-            {
-                return View("Error");
-            }
+        //[HttpPost]
+        //public ActionResult PerformAction(string server, string action)
+        //{
+        //    if (string.IsNullOrEmpty(server) || string.IsNullOrEmpty(action))
+        //    {
+        //        return View("Error");
+        //    }
 
-            switch (action)
-            {
-                case "get":
-                    return RedirectToAction("GetULBs", new { server = server });
-                case "create":
-                    return RedirectToAction("CreateULB", new { server = server });
-                default:
-                    return View("Error");
-            }
-        }
+        //    switch (action)
+        //    {
+        //        case "get":
+        //            return RedirectToAction("GetULBs", new { server = server });
+        //        case "create":
+        //            return RedirectToAction("CreateULB", new { server = server });
+        //        default:
+        //            return View("Error");
+        //    }
+        //}
 
 
     }

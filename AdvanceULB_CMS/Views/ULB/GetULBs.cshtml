@@ -3,33 +3,33 @@
 @{
     ViewData["Title"] = "GetULBs";
 }
+<p>
+    @Html.ActionLink("Create ULB", "CreateULB", "ULB")
+</p>
+<h1>GetULBs</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>App ID</th>
-            <th>App Name</th>
+            <th>
+                @Html.DisplayNameFor(model => model.appId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.appName)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.appId</td>
-                <td>@item.appName</td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.appId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appName)
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
-<script>
-    var data = @Html.Raw(Json.Serialize(Model));
-
-    data.forEach(function (item) {
-        console.log("{");
-        console.log("  \"appId\": " + item.appId + ",");
-        console.log("  \"appName\": \"" + item.appName + "\"");
-        console.log("},");
-    });
-</script>
-

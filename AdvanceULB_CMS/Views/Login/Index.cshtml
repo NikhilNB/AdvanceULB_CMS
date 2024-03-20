@@ -1,0 +1,88 @@
+﻿@model AdvanceULB_CMS.Models.Accounts
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V10</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<meta name="robots" content="noindex, follow">
+	<script nonce="1d69d72a-6886-4583-a70a-378eb38b2c16">try { (function (w, d) { !function (mo, mp, mq, mr) { mo[mq] = mo[mq] || {}; mo[mq].executed = []; mo.zaraz = { deferred: [], listeners: [] }; mo.zaraz.q = []; mo.zaraz._f = function (ms) { return async function () { var mt = Array.prototype.slice.call(arguments); mo.zaraz.q.push({ m: ms, a: mt }) } }; for (const mu of ["track", "set", "debug"]) mo.zaraz[mu] = mo.zaraz._f(mu); mo.zaraz.init = () => { var mv = mp.getElementsByTagName(mr)[0], mw = mp.createElement(mr), mx = mp.getElementsByTagName("title")[0]; mx && (mo[mq].t = mp.getElementsByTagName("title")[0].text); mo[mq].x = Math.random(); mo[mq].w = mo.screen.width; mo[mq].h = mo.screen.height; mo[mq].j = mo.innerHeight; mo[mq].e = mo.innerWidth; mo[mq].l = mo.location.href; mo[mq].r = mp.referrer; mo[mq].k = mo.screen.colorDepth; mo[mq].n = mp.characterSet; mo[mq].o = (new Date).getTimezoneOffset(); if (mo.dataLayer) for (const mB of Object.entries(Object.entries(dataLayer).reduce(((mC, mD) => ({ ...mC[1], ...mD[1] })), {}))) zaraz.set(mB[0], mB[1], { scope: "page" }); mo[mq].q = []; for (; mo.zaraz.q.length;) { const mE = mo.zaraz.q.shift(); mo[mq].q.push(mE) } mw.defer = !0; for (const mF of [localStorage, sessionStorage]) Object.keys(mF || {}).filter((mH => mH.startsWith("_zaraz_"))).forEach((mG => { try { mo[mq]["z_" + mG.slice(7)] = JSON.parse(mF.getItem(mG)) } catch { mo[mq]["z_" + mG.slice(7)] = mF.getItem(mG) } })); mw.referrerPolicy = "origin"; mw.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(mo[mq]))); mv.parentNode.insertBefore(mw, mv) };["complete", "interactive"].includes(mp.readyState) ? zaraz.init() : mo.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-50 p-b-90">
+				@using (Html.BeginForm("CheckLogin", "Login", FormMethod.Post, new { @class = "login100-form validate-form flex-sb flex-w" }))
+				{
+					<span class="login100-form-title p-b-51">
+						Login
+					</span>
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
+						@Html.TextBoxFor(m => m.username, new { @class = "input-material", @id = "login-username", placeholder = "Username" })
+					@* @Html.TextBox("username", null, new { @class = "input100", placeholder = "Username" }) *@
+						@Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger", style = "display:block;font-size:11px;margin-top:2px" })
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+						@Html.Password("pass", null, new { @class = "input100", placeholder = "Password" })
+						<span class="focus-input100"></span>
+					</div>
+					<div class="flex-sb-m w-full p-t-3 p-b-24">
+						<div class="contact100-form-checkbox">
+							@Html.CheckBox("remember-me", false, new { @class = "input-checkbox100", id = "ckb1" })
+							@Html.Label("ckb1", "Remember me", new { @class = "label-checkbox100" })
+						</div>
+						<div>
+							<a href="#" class="txt1">
+								Forgot?
+							</a>
+						</div>
+					</div>
+					<div class="container-login100-form-btn m-t-17">
+						<button type="submit" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+	<div id="dropDownSelect1"></div>
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="js/main.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-23581568-13');
+	</script>
+	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"86740b1d1da28f9b","version":"2024.3.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
+</body>
+</html>

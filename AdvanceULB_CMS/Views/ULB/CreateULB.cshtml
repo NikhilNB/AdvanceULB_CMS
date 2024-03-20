@@ -13,6 +13,16 @@
         <form asp-action="CreateULB">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="server" class="control-label"></label>
+                <select asp-for="server" class="form-control">
+                    <option value="local">Local</option>
+                    <option value="253">253</option>
+                    <option value="43">43</option>
+                </select>
+
+                <span asp-validation-for="server" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="appName" class="control-label"></label>
                 <input asp-for="appName" class="form-control" />
                 <span asp-validation-for="appName" class="text-danger"></span>

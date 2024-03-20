@@ -2,6 +2,7 @@
 {
     public class ULBCreation
     {
+        public string? server {  get; set; }
         public string? appName { get; set; }
         public string? extName { get; set; }
         public string? marName { get; set; }
