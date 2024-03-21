@@ -88,26 +88,5 @@ namespace AdvanceULB_CMS.Controllers
             }
         }
 
-
-        //[HttpPost]
-        //public ActionResult PerformAction(string server, string action)
-        //{
-        //    if (string.IsNullOrEmpty(server) || string.IsNullOrEmpty(action))
-        //    {
-        //        return View("Error");
-        //    }
-
-        //    switch (action)
-        //    {
-        //        case "get":
-        //            return RedirectToAction("GetULBs", new { server = server });
-        //        case "create":
-        //            return RedirectToAction("CreateULB", new { server = server });
-        //        default:
-        //            return View("Error");
-        //    }
-        //}
-
-
     }
 }

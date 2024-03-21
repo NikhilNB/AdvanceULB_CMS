@@ -10,14 +10,13 @@ namespace AdvanceULB_CMS.Controllers
             return View();
         }
 
-        public IActionResult CheckLogin()
+        public IActionResult CheckLogin(Accounts obj)
         {
-            Accounts accounts = new Accounts();
-            if(accounts.username== "admin" &&  accounts.password== "admin")
+            if(obj.username== "UlbCreation@project.com" && obj.password== "admin#123")
             {
                 return RedirectToAction("Index", "ULB");
             }
-            return View();
+            return RedirectToAction("CheckLogin", "Login");
         }
     }
 }

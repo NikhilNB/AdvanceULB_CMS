@@ -3,86 +3,93 @@
     Layout = null;
 }
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1O3Wzq3v8S2kqg88e3voIxY4Fnf3HYNh7EmA6F" crossorigin="anonymous">
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V10</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULB Login Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
 
-	<meta name="robots" content="noindex, follow">
-	<script nonce="1d69d72a-6886-4583-a70a-378eb38b2c16">try { (function (w, d) { !function (mo, mp, mq, mr) { mo[mq] = mo[mq] || {}; mo[mq].executed = []; mo.zaraz = { deferred: [], listeners: [] }; mo.zaraz.q = []; mo.zaraz._f = function (ms) { return async function () { var mt = Array.prototype.slice.call(arguments); mo.zaraz.q.push({ m: ms, a: mt }) } }; for (const mu of ["track", "set", "debug"]) mo.zaraz[mu] = mo.zaraz._f(mu); mo.zaraz.init = () => { var mv = mp.getElementsByTagName(mr)[0], mw = mp.createElement(mr), mx = mp.getElementsByTagName("title")[0]; mx && (mo[mq].t = mp.getElementsByTagName("title")[0].text); mo[mq].x = Math.random(); mo[mq].w = mo.screen.width; mo[mq].h = mo.screen.height; mo[mq].j = mo.innerHeight; mo[mq].e = mo.innerWidth; mo[mq].l = mo.location.href; mo[mq].r = mp.referrer; mo[mq].k = mo.screen.colorDepth; mo[mq].n = mp.characterSet; mo[mq].o = (new Date).getTimezoneOffset(); if (mo.dataLayer) for (const mB of Object.entries(Object.entries(dataLayer).reduce(((mC, mD) => ({ ...mC[1], ...mD[1] })), {}))) zaraz.set(mB[0], mB[1], { scope: "page" }); mo[mq].q = []; for (; mo.zaraz.q.length;) { const mE = mo.zaraz.q.shift(); mo[mq].q.push(mE) } mw.defer = !0; for (const mF of [localStorage, sessionStorage]) Object.keys(mF || {}).filter((mH => mH.startsWith("_zaraz_"))).forEach((mG => { try { mo[mq]["z_" + mG.slice(7)] = JSON.parse(mF.getItem(mG)) } catch { mo[mq]["z_" + mG.slice(7)] = mF.getItem(mG) } })); mw.referrerPolicy = "origin"; mw.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(mo[mq]))); mv.parentNode.insertBefore(mw, mv) };["complete", "interactive"].includes(mp.readyState) ? zaraz.init() : mo.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
+        .bg {
+            background-image: url("https://media.istockphoto.com/id/882286616/vector/containers-for-garbage-of-different-types-on-autumn-street-city.jpg?s=2048x2048&w=is&k=20&c=AqbvZxfOUHEaNzEKILGPAImcFdMBF7DF4VSrrOBPfYc=");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .login-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-modal {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 80px 100px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.6);
+            width: auto;
+        }
+
+        .form-control, .btn-login {
+            border-radius: 30px; 
+            font-size: 18px;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+            .btn-login:hover {
+                background-color: #0056b3;
+            }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+    </style>
 </head>
 <body>
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-50 p-b-90">
-				@using (Html.BeginForm("CheckLogin", "Login", FormMethod.Post, new { @class = "login100-form validate-form flex-sb flex-w" }))
-				{
-					<span class="login100-form-title p-b-51">
-						Login
-					</span>
-					<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-						@Html.TextBoxFor(m => m.username, new { @class = "input-material", @id = "login-username", placeholder = "Username" })
-					@* @Html.TextBox("username", null, new { @class = "input100", placeholder = "Username" }) *@
-						@Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger", style = "display:block;font-size:11px;margin-top:2px" })
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-						@Html.Password("pass", null, new { @class = "input100", placeholder = "Password" })
-						<span class="focus-input100"></span>
-					</div>
-					<div class="flex-sb-m w-full p-t-3 p-b-24">
-						<div class="contact100-form-checkbox">
-							@Html.CheckBox("remember-me", false, new { @class = "input-checkbox100", id = "ckb1" })
-							@Html.Label("ckb1", "Remember me", new { @class = "label-checkbox100" })
-						</div>
-						<div>
-							<a href="#" class="txt1">
-								Forgot?
-							</a>
-						</div>
-					</div>
-					<div class="container-login100-form-btn m-t-17">
-						<button type="submit" class="login100-form-btn">
-							Login
-						</button>
-					</div>
-				}
-			</div>
-		</div>
-	</div>
-	<div id="dropDownSelect1"></div>
 
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<script src="js/main.js"></script>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+    <div class="bg">
+        <div class="login-container">
+            <div class="login-modal">
+                <h2 class="text-center mb-5"> ULB Login</h2>
+                <form action="/Login/CheckLogin" method="post">
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group mb-5">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-login btn-lg">Login</button>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="#" class="text-decoration-none">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-		gtag('config', 'UA-23581568-13');
-	</script>
-	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"86740b1d1da28f9b","version":"2024.3.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

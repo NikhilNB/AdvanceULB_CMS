@@ -4,62 +4,136 @@
     ViewData["Title"] = "CreateULB";
 }
 
-<h1>CreateULB</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create ULB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
-<h4>ULBCreation</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateULB">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="server" class="control-label"></label>
-                <select asp-for="server" class="form-control">
-                    <option value="local">Local</option>
-                    <option value="253">253</option>
-                    <option value="43">43</option>
-                </select>
+        .bg {
+            background-image: url("https://media.istockphoto.com/id/882286616/vector/containers-for-garbage-of-different-types-on-autumn-street-city.jpg?s=2048x2048&w=is&k=20&c=AqbvZxfOUHEaNzEKILGPAImcFdMBF7DF4VSrrOBPfYc=");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-                <span asp-validation-for="server" class="text-danger"></span>
+        .container-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            color: black;
+        }
+
+        .form-control, .btn-primary {
+            border-radius: 20px;
+            font-size: 18px;
+        }
+
+        .btn-primary {
+            padding: 15px 25px;
+            transition: background-color 0.2s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .text-danger {
+            color: #ffcccc;
+        }
+
+        .form-control, .back-link {
+            border-radius: 20px;
+            font-size: 18px;
+        }
+
+        .back-link {
+            padding: 15px 25px;
+            transition: background-color 0.2s;
+        }
+
+            .back-link:hover {
+                color: #ffc107;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="bg">
+        <div class="container-form">
+            <h1 class="text-center mb-4">Create ULB</h1>
+            <form asp-action="CreateULB">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="server" class="control-label"></label>
+                    <select asp-for="server" class="form-control">
+                        <option value="local">Local</option>
+                        <option value="253">253</option>
+                        <option value="43">43</option>
+                    </select>
+                    <span asp-validation-for="server" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="appName" class="control-label"></label>
+                    <input asp-for="appName" class="form-control" />
+                    <span asp-validation-for="appName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="extName" class="control-label"></label>
+                    <input asp-for="extName" class="form-control" />
+                    <span asp-validation-for="extName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="marName" class="control-label"></label>
+                    <input asp-for="marName" class="form-control" />
+                    <span asp-validation-for="marName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="property" class="control-label"></label>
+                    <input asp-for="property" class="form-control" />
+                    <span asp-validation-for="property" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="lat" class="control-label"></label>
+                    <input asp-for="lat" class="form-control" />
+                    <span asp-validation-for="lat" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="lng" class="control-label"></label>
+                    <input asp-for="lng" class="form-control" />
+                    <span asp-validation-for="lng" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-action="Index" class="back-link">Back to List</a>
+                        </div>
+                <div>
+                    
+                </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="appName" class="control-label"></label>
-                <input asp-for="appName" class="form-control" />
-                <span asp-validation-for="appName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="extName" class="control-label"></label>
-                <input asp-for="extName" class="form-control" />
-                <span asp-validation-for="extName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="marName" class="control-label"></label>
-                <input asp-for="marName" class="form-control" />
-                <span asp-validation-for="marName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="property" class="control-label"></label>
-                <input asp-for="property" class="form-control" />
-                <span asp-validation-for="property" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="lat" class="control-label"></label>
-                <input asp-for="lat" class="form-control" />
-                <span asp-validation-for="lat" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="lng" class="control-label"></label>
-                <input asp-for="lng" class="form-control" />
-                <span asp-validation-for="lng" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+           
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
