@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AdvanceULB_CMS.Models.AppDetailsData>
+
+@{
+    ViewData["Title"] = "GetAppDetailsDataList";
+}
+
+<h1>GetAppDetailsDataList</h1>
+
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.appId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.appName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apiHit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ulbProperty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.addUlbProperty)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.appId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apiHit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ulbProperty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addUlbProperty)
+            </td>
+                <td>
+                  
+                    @Html.ActionLink("UpdatePropertyCounts", "Task") 
+                </td>
+
+        </tr>
+}
+    </tbody>
+</table>

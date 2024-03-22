@@ -1,0 +1,50 @@
+﻿@model AdvanceULB_CMS.Models.PropertyCounts
+
+@{
+    ViewData["Title"] = "UpdatePropertyCounts";
+}
+
+<h1>UpdatePropertyCounts</h1>
+
+<h4>PropertyCounts</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdatePropertyCounts">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="server" class="control-label"></label>
+                <input asp-for="server" class="form-control" />
+                <span asp-validation-for="server" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="appId" class="control-label"></label>
+                <input asp-for="appId" class="form-control" />
+                <span asp-validation-for="appId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apiHit" class="control-label"></label>
+                <input asp-for="apiHit" class="form-control" />
+                <span asp-validation-for="apiHit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ulbProperty" class="control-label"></label>
+                <input asp-for="ulbProperty" class="form-control" />
+                <span asp-validation-for="ulbProperty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="addUlbProperty" class="control-label"></label>
+                <input asp-for="addUlbProperty" class="form-control" />
+                <span asp-validation-for="addUlbProperty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
