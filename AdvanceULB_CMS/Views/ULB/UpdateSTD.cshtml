@@ -1,0 +1,78 @@
+﻿@model AdvanceULB_CMS.Models.UpdateSTDModel
+@{
+    ViewData["Title"] = "UpdateSTD";
+}
+
+<h1>Update STD</h1>
+
+<form asp-action="UpdateSTD">
+    <div>
+        <label>App ID:</label>
+        <input type="text" asp-for="appId" />
+    </div>
+    <div>
+        <label>Server:</label>
+        <input type="text" asp-for="server" />
+    </div>
+    <div>
+        <label>State:</label>
+        <select asp-for="State" asp-items="@(new SelectList(ViewBag.States, "Value", "Text"))">
+            <option value="">-- Select State --</option>
+        </select>
+    </div>
+    <div>
+        <label>Tehsil:</label>
+        <select asp-for="Tehsil" asp-items="@(new SelectList(ViewBag.Tehsils, "Value", "Text"))">
+            <option value="">-- Select Tehsil --</option>
+        </select>
+    </div>
+    <div>
+        <label>District:</label>
+        <select asp-for="District" asp-items="@(new SelectList(ViewBag.Districts, "Value", "Text"))">
+            <option value="">-- Select District --</option>
+        </select>
+    </div>
+
+    <button type="submit">Update STD</button>
+</form>
+
+@* @if (Model != null)
+{
+    <form id="updateForm" method="post" action="@Url.Action("UpdateSTD", "ULB", new { appId = Model.appId, server = Model.server }))">
+        <input type="hidden" id="appId" name="appId" value="@Model.appId" />
+        <input type="hidden" id="server" name="server" value="@Model.server" />
+
+        <div class="form-group">
+            <label for="State">State:</label>
+            <input type="text" class="form-control" id="State" name="State" value="@Model.State" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Tehsil">Tehsil:</label>
+            <input type="text" class="form-control" id="Tehsil" name="Tehsil" value="@Model.Tehsil" required />
+        </div>
+
+        <div class="form-group">
+            <label for="District">District:</label>
+            <input type="text" class="form-control" id="District" name="District" value="@Model.District" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+}
+else
+{
+    <p>Error: Unable to load STD details.</p>
+} *@
+
+<script>
+    // Add event listener to update button clicks
+    $(document).ready(function () {
+        $('.update-btn').click(function () {
+            var appId = $(this).data('appid');
+            var server = $(this).data('server');
+            $('#appId').val(appId);
+            $('#server').val(server);
+        });
+    });
+</script>

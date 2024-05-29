@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Enter Required Fields";
+}
+
+<h1>Get App Details Data List</h1>
+
+<form method="get" action="@Url.Action("GetAppDetailsDataList", "ULB")">
+    <div class="form-group">
+        <label for="server">Server:</label>
+        <input type="text" id="server" name="server" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="appId">App ID:</label>
+        <input type="text" id="appId" name="appId" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Get Data</button>
+</form>
+

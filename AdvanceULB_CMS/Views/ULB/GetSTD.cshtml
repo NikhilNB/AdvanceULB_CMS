@@ -1,14 +1,14 @@
-﻿ @model IEnumerable<AdvanceULB_CMS.Models.PropertyCounts>
+﻿@model IEnumerable<AdvanceULB_CMS.Models.STDModel>
 
 @{
-    ViewData["Title"] = "GetULBs";
+    ViewData["Title"] = "GetSTD";
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get ULBs</title>
+    <title>Get STD's</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
     <style>
         body {
@@ -44,7 +44,7 @@
 <body>
 
     <div class="container">
-        <h1 class="mb-4">ULB List</h1>
+        <h1 class="mb-4">STD List</h1>
         <p>
             <a href="@Url.Action("CreateULB", "ULB")" class="btn btn-primary">Create ULB</a>
         </p>
@@ -53,16 +53,22 @@
                 <tr>
                     <th>App ID</th>
                     <th>App Name</th>
-                    <th>Action</th> 
+                    <th>State</th>
+                    <th>Tehsil</th>
+                    <th>District</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.appId)</td>
-                        <td>@Html.DisplayFor(modelItem => item.appName)</td>
-                        <td><a href="@Url.Action("Update", "ULB", new { appId = item.appId, server = item.server })">Update</a></td>
+                        <td>@Html.DisplayFor(Model => item.appId)</td>
+                        <td>@Html.DisplayFor(Model => item.appName)</td>
+                        <td>@Html.DisplayFor(Model => item.State)</td>
+                        <td>@Html.DisplayFor(Model => item.Tehsil)</td>
+                        <td>@Html.DisplayFor(Model => item.District)</td>
+                        <td><a href="@Url.Action("UpdateSTD", "ULB", new { appId = item.appId, server = item.server })">Update</a></td>
                     </tr>
                 }
             </tbody>
